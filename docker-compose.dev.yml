@@ -5,13 +5,13 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.dev
-    container_name: fastapi-app
+    container_name: fastapi-app-gemini-gateway
     volumes:
       - ./app:/app/app
       - ./config:/app/config
       - ./data:/app/data
-    ports:
-      - "8000:8000"
+    expose:
+      - "8000"
     restart: unless-stopped
     environment:
       - PYTHONUNBUFFERED=1
@@ -19,7 +19,7 @@ services:
   nginx:
     build:
       context: ./nginx
-    container_name: nginx-proxy
+    container_name: nginx-proxy-gemini-gateway
     ports:
       - "80:80"
     depends_on:

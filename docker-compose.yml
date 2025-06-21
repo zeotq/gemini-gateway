@@ -2,7 +2,7 @@ services:
   app:
     build:
       context: .
-    container_name: fastapi-app
+    container_name: fastapi-app-gemini-gateway
     expose:
       - "8000"
     restart: unless-stopped
@@ -10,7 +10,7 @@ services:
   nginx:
     build:
       context: ./nginx
-    container_name: nginx-proxy
+    container_name: nginx-proxy-gemini-gateway
     ports:
       - "80:80"
     depends_on:
