@@ -1,0 +1,6 @@
+{
+    "example prompt": {
+        "description": "You have to open README.md",
+        "prompt": "example.txt"
+    }
+}

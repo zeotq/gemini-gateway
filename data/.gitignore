@@ -1,0 +1,6 @@
+# Ignore the promts (except for the example)
+prompts/*.txt
+!prompts/example.txt
+
+# Ignore custom configuration
+prompts.json
