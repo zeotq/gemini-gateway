@@ -47,7 +47,7 @@ class AIGeminiClient:
         return model
 
     async def generate_message(self, request: GeminiRequest) -> str:
-        model: genai.GenerativeModel = await self.model_generation(request)
+        model: genai.GenerativeModel = await self.model_generation(request.model_settings)
         response = await model.generate_content_async(contents=request.request_text)
         return response.to_dict()
 
