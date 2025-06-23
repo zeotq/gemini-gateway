@@ -1,6 +1,6 @@
 from fastapi import HTTPException, status
 from app.core.logger import setup_logger
-from app.services.ai_client import AIGeminiClient
+from app.services.ai_client import AIGeminiClient, GeminiGenerationError
 from app.models.gemini import GeminiRequest, GeminiRequestWithLocalPrompt, GeminiGererativeModelSettings, GeminiGenirationConfig
 
 logger = setup_logger(__name__)
@@ -78,9 +78,9 @@ async def send_request_to_gemini(
     request: GeminiRequest,
 ):
     try:
-        result = await ai_client.generate_message(request)
-    except Exception as e:
-        logger.error(f"Error sending request to Gemini: {e}")
+        result = await ai_client.generete_message_safe(request)
+    except GeminiGenerationError as e:
+        logger.error(e.with_traceback())
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail=str(e)
