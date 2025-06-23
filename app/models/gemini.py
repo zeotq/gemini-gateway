@@ -35,9 +35,9 @@ class GeminiGererativeModelSettings(BaseModel):
 
 class GeminiRequest(BaseModel):
     request_text: str
-    model_settings: GeminiGererativeModelSettings
+    model_settings: GeminiGererativeModelSettings = GeminiGererativeModelSettings()
 
 class GeminiRequestWithLocalPrompt(GeminiRequest):
     request_text: str
     local_prompt_key_name: str
-    model_settings: GeminiGererativeModelSettings
+    model_settings: GeminiGererativeModelSettings = GeminiGererativeModelSettings()
