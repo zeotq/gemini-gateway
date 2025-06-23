@@ -12,7 +12,7 @@ services:
       context: ./nginx
     container_name: nginx-proxy-gemini-gateway
     ports:
-      - "80:80"
+      - "8000:80"
     depends_on:
       - app
     restart: unless-stopped
